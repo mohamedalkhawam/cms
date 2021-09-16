@@ -6,6 +6,8 @@ import {
   AiOutlineFullscreen,
   AiOutlineFullscreenExit,
 } from "react-icons/ai";
+import { FiChevronDown } from "react-icons/fi";
+import { MdLanguage } from "react-icons/md";
 import { renderDrowerData } from "./drawerData";
 import { RiDashboardLine, RiLogoutBoxLine } from "react-icons/ri";
 const Layout = ({ children, parentClassName, isAuthenticated }) => {
@@ -66,7 +68,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
             className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2"
           >
             {/* content start */}
-            {/* {renderDrowerData({ mainColor, background }).map((item) => (
+            {renderDrowerData({ mainColor, background }).map((item) => (
               <div
                 onClick={() => {}}
                 style={{ color: mainColor, backgroundColor: background }}
@@ -77,7 +79,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
                   {item.name}
                 </div>
               </div>
-            ))} */}
+            ))}
 
             <div
               dir={`${language === "en" ? `ltr` : `rtl`}`}
@@ -136,7 +138,11 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
               isMenuopen
                 ? `${language === "en" ? `left-64` : `right-64`}`
                 : `${language === "en" ? `left-0` : `right-0`}`
-            }  z-40 transform-gpu transition-all text-theme-light px-7 flex items-center justify-end duration-1000 `}
+            } ${
+              isMenuopen
+                ? `${language === "en" ? `pr-72` : `pl-72`}`
+                : `${language === "en" ? `pr-6` : `pl-6`}`
+            }  z-40 transform-gpu transition-all text-theme-light px-7 flex justify-end items-center duration-1000 `}
           >
             <div
               dir={`${language === "en" ? `ltr` : `rtl`}`}
@@ -153,19 +159,32 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
                 <AiOutlineFullscreen size="1.6rem" color={background} />
               )}
             </div>
+            <div
+              className={`text-theme-light hidden items-center cursor-pointer select-none  sm:flex ${
+                language === "en" ? `flex-row` : `flex-row-reverse`
+              }`}
+            >
+              <MdLanguage size="1.6rem" color={background} strokeWidth="0.1" />
+              <div className={`text-theme-light text-sm px-2`}>English</div>
+              <div className="cursor-pointer">
+                <FiChevronDown size="1.5rem" color={background} />
+              </div>
+            </div>
           </div>
           {children}
           <div
             dir={`${language === "en" ? `ltr` : `rtl`}`}
-            className={`${
-              fullscreen ? ` -bottom-14 ` : ` bottom-0 `
+            className={`${fullscreen ? ` -bottom-14 ` : ` bottom-0 `} ${
+              isMenuopen
+                ? `${language === "en" ? `pr-72` : `pl-72`}`
+                : `${language === "en" ? `pr-6` : `pl-6`}`
             } fixed bg-theme-dark  ${
               isMenuopen
                 ? `${language === "en" ? `left-64` : `right-64`}`
                 : `${language === "en" ? `left-0` : `right-0`}`
-            }  h-14 w-full   transform-gpu transition-all text-theme-light px-7 flex items-center duration-1000 text-xs `}
+            }  h-14 w-full   transform-gpu transition-all text-theme-light px-7 flex justify-end items-center duration-1000 text-xs `}
           >
-            Mohamed Al-khawam
+            &copy; SOFTTECH 2020 - 2021
           </div>
         </div>
       </div>
