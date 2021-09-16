@@ -13,7 +13,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
   const [fullscreen, setFullscreen] = useState(false);
   const mainColor = "#333333";
   const background = "#F8F8F8";
-  const language = "ar";
+  const language = "en";
   return (
     <>
       <div
@@ -101,7 +101,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
             </div>
             <div
               onClick={() => setFullscreen(!fullscreen)}
-              className={` z-50 fixed bottom-5  ${
+              className={` z-50 fixed bottom-5  cursor-pointer  ${
                 isMenuopen
                   ? `${language === "en" ? `left-5` : `right-5`}`
                   : `${language === "en" ? `hidden` : `hidden`}`
@@ -115,7 +115,6 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
             </div>
           </div>
         </div>
-
         <div
           dir={`${language === "en" ? `ltr` : `rtl`}`}
           className={`w-full transition-all duration-1000 flex-grow flex-shrik overflow-hidden ${
@@ -142,7 +141,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
             <div
               dir={`${language === "en" ? `ltr` : `rtl`}`}
               onClick={() => setFullscreen(!fullscreen)}
-              className={` z-50  fixed transition-all duration-1000 top-7 ${
+              className={` z-50  fixed transition-all duration-1000 top-7 cursor-pointer ${
                 isMenuopen
                   ? `${language === "en" ? `left-72` : `right-72`}`
                   : `${language === "en" ? `left-24` : `right-24`}`
