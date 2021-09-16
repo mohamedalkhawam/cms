@@ -1,162 +1,173 @@
 import React, { useState, useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
 import {
   AiOutlineMenuFold,
   AiOutlineMenuUnfold,
   AiOutlineUser,
-  AiOutlineDashboard,
+  AiOutlineFullscreen,
+  AiOutlineFullscreenExit,
 } from "react-icons/ai";
+import { renderDrowerData } from "./drawerData";
 import { RiDashboardLine, RiLogoutBoxLine } from "react-icons/ri";
-import { FiSettings } from "react-icons/fi";
-import { GrServices } from "react-icons/gr";
-import { SiOpenaccess } from "react-icons/si";
-import { BiBuildingHouse } from "react-icons/bi";
-import { VscGitPullRequest } from "react-icons/vsc";
-import { GiModernCity, GiRegeneration } from "react-icons/gi";
-import { Fa500Px, FaCriticalRole } from "react-icons/fa";
-// import { logout } from '../redux/actions/auth';
-
 const Layout = ({ children, parentClassName, isAuthenticated }) => {
-  // const dispatch = useDispatch();
   const [isMenuopen, setIsMenuOpen] = useState(true);
+  const [fullscreen, setFullscreen] = useState(false);
   const mainColor = "#333333";
   const background = "#F8F8F8";
-
+  const language = "ar";
   return (
     <>
       <div
         style={{ backgroundColor: mainColor }}
         onClick={() => setIsMenuOpen(!isMenuopen)}
-        className={`bg-green-700 p-1 rounded-lg ${
+        className={`p-1 rounded-lg ${
           isMenuopen ? `hidden absolute` : `block fixed`
-        } opacity-50 select-none hover:opacity-100 shadow-md hover:shadow-lg cursor-pointer left-8 top-8 w-9 h-9 text-white transition-all duration-200 transform hover:scale-105 z-50 overflow-x-hidden`}
+        } ${language === "en" ? `open-drawer-btn-ltr` : `open-drawer-btn-rtl`}`}
       >
-        <AiOutlineMenuUnfold size="1.7rem" className="text-white " />
+        {language === "en" ? (
+          <AiOutlineMenuUnfold size="1.7rem" className="text-white" />
+        ) : (
+          <AiOutlineMenuFold size="1.7rem" className="text-white " />
+        )}
       </div>
-      <div className="relative flex overflow-x-hidden transition duration-1000 ">
+
+      <div
+        className={`relative flex overflow-x-hidden transition duration-1000  ${
+          language === "en" ? `flex-row` : `flex-row-reverse`
+        }`}
+      >
         <div
-          style={{ backgroundColor: mainColor }}
-          className={`bg-green-700 min-h-screen shadow-md hover:shadow-lg ${
-            isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`
-          } transform-gpu transition-all duration-1000 flex-none select-none overflow-y-auto text-white fixed`}
+          className={`  ${isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`} drawer `}
         >
-          <div className="flex items-center justify-between pb-4 font-semibold text-white border-b ">
+          <div
+            dir={`${language === "en" ? `ltr` : `rtl`}`}
+            className="flex items-center justify-between pb-6 font-semibold text-white border-b "
+          >
             <div className="flex items-center transform cursor-pointer hover:scale-105">
               <RiDashboardLine size="1.6rem" className="text-white " />
-              <div className="pl-1 ">Dashboard</div>
+              <div className={`${language === "en" ? `pl-1` : `pr-1`}`}>
+                Dashboard
+              </div>
             </div>
 
             <div
               className="transform cursor-pointer hover:scale-105 "
               onClick={() => setIsMenuOpen(!isMenuopen)}
             >
-              <AiOutlineMenuFold size="1.7rem" className="text-white" />
+              {language === "en" ? (
+                <AiOutlineMenuFold size="1.7rem" className="text-white" />
+              ) : (
+                <AiOutlineMenuUnfold size="1.7rem" className="text-white " />
+              )}
             </div>
           </div>
 
-          <div className="h-screen pt-2 pb-8 overflow-hidden overflow-y-auto">
+          <div
+            dir={`${language === "en" ? `ltr` : `rtl`}`}
+            className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2"
+          >
             {/* content start */}
+            {/* {renderDrowerData({ mainColor, background }).map((item) => (
+              <div
+                onClick={() => {}}
+                style={{ color: mainColor, backgroundColor: background }}
+                className="flex items-center px-2 py-2 my-2 font-semibold  transition-transform bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
+              >
+                {item.icon}
+                <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
+                  {item.name}
+                </div>
+              </div>
+            ))} */}
+
             <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition-transform bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
+              dir={`${language === "en" ? `ltr` : `rtl`}`}
+              className="bg-gray-50  "
             >
-              <AiOutlineUser size="1.6rem" className={mainColor} />
-              <div className="pl-2">Users</div>
+              <div
+                onClick={() => {}}
+                className={` ${
+                  language === "en" ? `menu-item-ltr` : `menu-item-rtl`
+                }`}
+              >
+                <RiLogoutBoxLine size="1.6rem" color={background} />
+                <div
+                  className={`${
+                    language === "en" ? `pl-2` : `pr-2`
+                  } text-theme-light`}
+                >
+                  Logout
+                </div>
+              </div>
             </div>
             <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
+              onClick={() => setFullscreen(!fullscreen)}
+              className={` z-50 fixed bottom-5  ${
+                isMenuopen
+                  ? `${language === "en" ? `left-5` : `right-5`}`
+                  : `${language === "en" ? `hidden` : `hidden`}`
+              } ${fullscreen ? `` : `hidden`} `}
             >
-              <GrServices size="1.6rem" color={mainColor} />
-              <div className="pl-2">Services</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <Fa500Px size="1.6rem" color={mainColor} />
-              <div className="pl-2">Plans</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <VscGitPullRequest size="1.6rem" color={mainColor} />
-              <div className="pl-2">Orders</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <VscGitPullRequest size="1.6rem" color={mainColor} />
-              <div className="pl-2">Scheduled Washes</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <FaCriticalRole size="1.6rem" color={mainColor} />
-              <div className="pl-2">Roles</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <SiOpenaccess size="1.6rem" color={mainColor} />
-              <div className="pl-2">Permissions</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <GiModernCity size="1.6rem" color={mainColor} />
-              <div className="pl-2">Cities</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <BiBuildingHouse size="1.6rem" color={mainColor} />
-              <div className="pl-2">Buildings</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <GiRegeneration size="1.6rem" color={mainColor} />
-              <div className="pl-2">Mobile Intro</div>
-            </div>
-            <div
-              onClick={() => {}}
-              style={{ color: mainColor, backgroundColor: background }}
-              className="flex items-center px-2 py-2 my-2 font-semibold text-green-700 transition bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
-            >
-              <RiLogoutBoxLine size="1.6rem" color={mainColor} />
-              <div className="pl-2">Logout</div>
+              {fullscreen ? (
+                <AiOutlineFullscreenExit size="1.6rem" color={background} />
+              ) : (
+                <AiOutlineFullscreen size="1.6rem" color={background} />
+              )}
             </div>
           </div>
         </div>
 
         <div
-          className={`w-full transition-all duration-1000 ${
-            isMenuopen ? "ml-64" : "ml-0"
+          dir={`${language === "en" ? `ltr` : `rtl`}`}
+          className={`w-full transition-all duration-1000 flex-grow flex-shrik overflow-hidden ${
+            fullscreen ? `my-0 ` : ` my-20`
+          } ${
+            isMenuopen
+              ? `${language === "en" ? `ml-64` : `mr-64`}`
+              : `${language === "en" ? `ml-0` : `mr-0`}`
           } ${
             parentClassName && parentClassName.length > 0
               ? `${parentClassName}`
               : ``
           }`}
         >
+          <div
+            className={`${
+              fullscreen ? ` -top-20  ` : `  top-0`
+            } fixed bg-theme-dark  h-20 w-full ${
+              isMenuopen
+                ? `${language === "en" ? `left-64` : `right-64`}`
+                : `${language === "en" ? `left-0` : `right-0`}`
+            }  z-40 transform-gpu transition-all text-theme-light px-7 flex items-center justify-end duration-1000 `}
+          >
+            <div
+              dir={`${language === "en" ? `ltr` : `rtl`}`}
+              onClick={() => setFullscreen(!fullscreen)}
+              className={` z-50  fixed transition-all duration-1000 top-7 ${
+                isMenuopen
+                  ? `${language === "en" ? `left-72` : `right-72`}`
+                  : `${language === "en" ? `left-24` : `right-24`}`
+              } ${fullscreen ? `hidden` : ``} `}
+            >
+              {fullscreen ? (
+                <AiOutlineFullscreenExit size="1.6rem" color={background} />
+              ) : (
+                <AiOutlineFullscreen size="1.6rem" color={background} />
+              )}
+            </div>
+          </div>
           {children}
+          <div
+            dir={`${language === "en" ? `ltr` : `rtl`}`}
+            className={`${
+              fullscreen ? ` -bottom-14 ` : ` bottom-0 `
+            } fixed bg-theme-dark  ${
+              isMenuopen
+                ? `${language === "en" ? `left-64` : `right-64`}`
+                : `${language === "en" ? `left-0` : `right-0`}`
+            }  h-14 w-full   transform-gpu transition-all text-theme-light px-7 flex items-center duration-1000 text-xs `}
+          >
+            Mohamed Al-khawam
+          </div>
         </div>
       </div>
     </>

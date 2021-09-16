@@ -10,6 +10,10 @@ module.exports = {
         "theme-hover": "#202020",
         "theme-light": "#F8F8F8",
       },
+      transitionDuration: {
+        2000: "2000ms",
+        1500: "1500ms",
+      },
     },
   },
   variants: {

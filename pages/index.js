@@ -3,13 +3,15 @@ import Layout from "../components/Layout";
 export default function Home() {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className=" items-center justify-center  h-screen py-2 overflow-hidden ">
         <Head>
           <title>Create Next App</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center "></main>
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 min-h-screen h-screen text-center overflow-y-auto">
+          s
+        </main>
 
         <footer className="flex items-center justify-center w-full h-24 border-t"></footer>
       </div>
