@@ -8,8 +8,10 @@ export default function ChangeLanguageBtn({ language, themeLgihtColor }) {
       }`}
     >
       <MdLanguage size="1.6rem" color={themeLgihtColor} strokeWidth="0.1" />
-      <div className={` text-sm px-2`}>English</div>
-      <div className="cursor-pointer">
+      <div className={` text-sm px-2 ${language === "en" ? `pr-5` : `pl-5`}`}>
+        English
+      </div>
+      <div className="cursor-pointer ">
         <FiChevronDown size="1.5rem" color={themeLgihtColor} />
       </div>
     </div>

@@ -33,14 +33,14 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
           themeLgihtColor={themeLgihtColor}
           language={language}
         />
-        <div>
+        {/* <div>
           <input
             type="color"
             onChange={(e) => setMainColor(e.target.value)}
             className="bg-black ml-96 mt-72 "
             value={mainColor}
           />
-        </div>
+        </div> */}
         <ContnentContainer
           isMenuopen={isMenuopen}
           fullscreen={fullscreen}
