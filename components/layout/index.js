@@ -6,10 +6,10 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
   const [isMenuopen, setIsMenuOpen] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
   const [mainColor, setMainColor] = useState("#1C5059");
+  const [language, setLanguage] = useState("en");
   //  441944; // 442944 //491944 //144014 //267069 //491911 //591944 //691944 //791944 //155994 //e69949
   // const mainColor = "#e69949";  5E97A1 1C5059
   const themeLgihtColor = "#F8F8F8";
-  const language = "en";
   return (
     <>
       <OpenDrawerFloatingBtn
@@ -33,14 +33,28 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
           themeLgihtColor={themeLgihtColor}
           language={language}
         />
-        {/* <div>
+        <div className={`${language === "en" ? `ml-96` : `mr-96`}`}>
           <input
             type="color"
             onChange={(e) => setMainColor(e.target.value)}
-            className="bg-black ml-96 mt-72 "
+            className="bg-black mt-72 "
             value={mainColor}
           />
-        </div> */}
+          <div
+            onClick={() => setLanguage("en")}
+            style={{ color: themeLgihtColor, backgroundColor: mainColor }}
+            className={` cursor-pointer p-4`}
+          >
+            English
+          </div>
+          <div
+            onClick={() => setLanguage("ar")}
+            style={{ color: themeLgihtColor, backgroundColor: mainColor }}
+            className="p-4  cursor-pointer "
+          >
+            Arabic
+          </div>
+        </div>
         <ContnentContainer
           isMenuopen={isMenuopen}
           fullscreen={fullscreen}
