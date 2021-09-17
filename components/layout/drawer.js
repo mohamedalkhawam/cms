@@ -16,14 +16,16 @@ export default function Drawer({
   return (
     <div
       style={{ color: themeLgihtColor, backgroundColor: mainColor }}
-      className={`  ${isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`} drawer `}
+      className={`  ${
+        isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`
+      } drawer transition-colors-none `}
     >
       <div
         style={{
           borderColor: themeLgihtColor,
         }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
-        className="flex items-center justify-between pb-6 font-semibold  border-b "
+        className="flex items-center justify-between pb-6 font-semibold  border-b transition-all duration-1000 "
       >
         <div
           onClick={() => router.push("/")}
@@ -50,7 +52,7 @@ export default function Drawer({
       <div
         style={{ color: themeLgihtColor, backgroundColor: mainColor }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
-        className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2"
+        className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2 transition-all duration-1000"
       >
         {/* content start */}
         {renderDrowerData({
@@ -90,9 +92,9 @@ export default function Drawer({
           <div
             style={{ color: themeLgihtColor, backgroundColor: mainColor }}
             onClick={() => {}}
-            className={` ${
+            className={`  ${
               language === "en" ? `menu-item-ltr ` : `menu-item-rtl`
-            }`}
+            }   `}
           >
             <RiLogoutBoxLine size="1.6rem" color={themeLgihtColor} />
             <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>

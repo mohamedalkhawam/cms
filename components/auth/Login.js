@@ -17,7 +17,7 @@ export default function Login({ toggleEvent, toggle }) {
 
   return (
     <div
-      className={`signUp absolute  bg-white shadow-md hover:shadow-lg w-11/12 sm:w-96 px-5 rounded py-4  border max-w-screen overflow-hidden transition-all  ${
+      className={`login absolute  bg-white shadow-md hover:shadow-lg w-11/12 sm:w-96 px-5 rounded py-4  border max-w-screen overflow-hidden transition-all  ${
         toggleLogin ? `` : `inactive-sx`
       } active-sx`}
     >
@@ -25,7 +25,7 @@ export default function Login({ toggleEvent, toggle }) {
         style={{ backgroundColor: mainColor }}
         className={`
              shadow-lg ${
-               authReducer.loading ? `animate-pulse` : ``
+               false ? `animate-pulse` : ``
              } my-4 border rounded p-5 text-white font-semibold text-center text-lg transform transition-all duration-500 overflow-hidden  z-50`}
       >
         Login
@@ -49,10 +49,9 @@ export default function Login({ toggleEvent, toggle }) {
           onChange={(e) => {
             onChange(e);
           }}
-          onClick={() => setTouched({ ...touched, email: true })}
           className="w-full px-2 py-3 bg-white border rounded shadow-md outline-none focus:outline-none focus:border-black "
         />
-        {errorValidation && errorValidation.email ? (
+        {false ? (
           <p className="my-1 text-xs text-red-500 ">{errorValidation.email}</p>
         ) : (
           ""
@@ -61,7 +60,6 @@ export default function Login({ toggleEvent, toggle }) {
       <div className="my-2">
         <div className="py-1 font-medium text-gray-700">Password:</div>
         <input
-          onClick={() => setTouched({ ...touched, password: true })}
           type="password"
           name="password"
           placeholder="Password"
@@ -70,7 +68,7 @@ export default function Login({ toggleEvent, toggle }) {
           onChange={(e) => onChange(e)}
           className="w-full px-2 py-3 bg-white border rounded shadow-md outline-none focus:outline-none focus:border-black"
         />
-        {errorValidation && errorValidation.password ? (
+        {false ? (
           <p className="my-1 text-xs text-red-500">
             {errorValidation.password}
           </p>
@@ -87,19 +85,19 @@ export default function Login({ toggleEvent, toggle }) {
       </div>
       <div className="flex items-center justify-center w-full px-4 py-6">
         <button
-          onClick={submit}
+          // onClick={submit}
           style={{
-            backgroundColor: _objI(errorValidation) ? "#666" : mainColor,
+            backgroundColor: mainColor,
             borderColor: mainColor,
           }}
           className=""
-          disabled={_objI(errorValidation)}
+          // disabled={_objI?.(errorValidation)}
           className={`   border
               w-10/12 ${
-                _objI(errorValidation) ? `cursor-not-allowed` : ``
+                false ? `cursor-not-allowed` : ``
               }  px-12 py-3 border-green-700 rounded shadow-md hover:shadow-lg outline-none focus:outline-none  bg-green-600 text-white hover:bg-green-700 relative`}
         >
-          {authReducer.loading ? (
+          {false ? (
             <svg
               className="absolute w-5 h-5 mr-3 border-r-2 border-white rounded-full animate-spin left-3"
               viewBox="0 0 24 24"

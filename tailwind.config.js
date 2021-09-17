@@ -14,6 +14,11 @@ module.exports = {
         2000: "2000ms",
         1500: "1500ms",
       },
+      fontFamily: {
+        cairo: ["cairo"],
+        ElMessiri: ["ElMessiri"],
+        poppins: ["poppins"],
+      },
     },
   },
   variants: {

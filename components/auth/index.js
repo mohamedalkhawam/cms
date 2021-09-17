@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-
-import { mainColor, background } from "../../styles/mainColors";
 import LoginCard from "./Login";
-import SignUpCard from "./SignUp";
-export default function Login({ history }) {
+import ForgetPasswordCard from "./forgetPassword";
+export default function Login() {
   const [toggleLogin, setToggleLogin] = useState(true);
+  const mainColor = "#333333";
 
   return (
     <div
@@ -13,16 +12,8 @@ export default function Login({ history }) {
        h-screen w-screen flex flex-col justify-center items-center  `}
     >
       <div className="max-h-screen w-screen flex flex-col justify-center items-center">
-        <LoginCard
-          toggle={toggleLogin}
-          toggleEvent={setToggleLogin}
-          history={history}
-        />
-        <SignUpCard
-          toggle={toggleLogin}
-          toggleEvent={setToggleLogin}
-          history={history}
-        />
+        <LoginCard toggle={toggleLogin} toggleEvent={setToggleLogin} />
+        <ForgetPasswordCard toggle={toggleLogin} toggleEvent={setToggleLogin} />
       </div>
     </div>
   );

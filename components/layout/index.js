@@ -5,7 +5,9 @@ import OpenDrawerFloatingBtn from "./openDrawerFloatingBtn";
 const Layout = ({ children, parentClassName, isAuthenticated }) => {
   const [isMenuopen, setIsMenuOpen] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
-  const mainColor = "#555555";
+  const [mainColor, setMainColor] = useState("#1C5059");
+  //  441944; // 442944 //491944 //144014 //267069 //491911 //591944 //691944 //791944 //155994 //e69949
+  // const mainColor = "#e69949";  5E97A1 1C5059
   const themeLgihtColor = "#F8F8F8";
   const language = "en";
   return (
@@ -18,7 +20,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
         themeLgihtColor={themeLgihtColor}
       />
       <div
-        className={`relative flex overflow-x-hidden transition duration-1000  ${
+        className={`relative flex overflow-x-hidden transition duration-1000 font-light ${
           language === "en" ? `flex-row` : `flex-row-reverse`
         }`}
       >
@@ -31,6 +33,14 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
           themeLgihtColor={themeLgihtColor}
           language={language}
         />
+        <div>
+          <input
+            type="color"
+            onChange={(e) => setMainColor(e.target.value)}
+            className="bg-black ml-96 mt-72 "
+            value={mainColor}
+          />
+        </div>
         <ContnentContainer
           isMenuopen={isMenuopen}
           fullscreen={fullscreen}

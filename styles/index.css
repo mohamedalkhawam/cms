@@ -23,6 +23,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #202020;
 }
+
 @layer components {
   .open-drawer-btn-ltr {
     @apply overflow-hidden opacity-50 select-none hover:opacity-100 shadow-md hover:shadow-lg cursor-pointer left-8 top-6 w-9 h-9 text-white transition-all duration-200 transform hover:scale-105 z-50 overflow-x-hidden;
@@ -34,15 +35,128 @@
     @apply min-h-screen shadow-md hover:shadow-lg bg-theme-dark z-50 transform-gpu transition-all duration-1000 flex-none select-none overflow-y-auto text-white fixed;
   }
   .menu-item-ltr {
-    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:translate-x-3  duration-200;
+    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition-all   hover:rounded-none  cursor-pointer  transform-gpu hover:translate-x-3  duration-200;
   }
   .menu-item-rtl {
-    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:-translate-x-3  duration-200;
+    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition-all  hover:rounded-none  cursor-pointer  transform-gpu hover:-translate-x-3  duration-200;
   }
   .menu-item-active-ltr {
     @apply translate-x-2;
   }
   .menu-item-active-rtl {
     @apply -translate-x-2;
+  }
+}
+.forgetPassowrd {
+  z-index: 1;
+  transform: perspective(100px) translate3d(100px, 0px, -30px);
+  opacity: 0.5;
+  -webkit-transform: perspective(100px) translate3d(100px, 0px, -30px);
+  -moz-transform: perspective(100px) translate3d(100px, 0px, -30px);
+  -ms-transform: perspective(100px) translate3d(100px, 0px, -30px);
+  -o-transform: perspective(100px) translate3d(100px, 0px, -30px);
+}
+
+.login {
+  z-index: 2;
+}
+
+.active-dx {
+  animation-name: foregrounding-dx;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.active-sx {
+  animation-name: foregrounding-sx;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.inactive-dx {
+  animation-name: overshadowing-dx;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.inactive-sx {
+  animation-name: overshadowing-sx;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes overshadowing-dx {
+  0% {
+    z-index: 3;
+    transform: perspective(100px) translate3d(0px, 0px, 0px);
+    opacity: 1;
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    z-index: 1;
+    transform: perspective(100px) translate3d(100px, 0px, -30px);
+    opacity: 0.5;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
+    -webkit-transform: perspective(100px) translate3d(100px, 0px, -30px);
+    -moz-transform: perspective(100px) translate3d(100px, 0px, -30px);
+    -ms-transform: perspective(100px) translate3d(100px, 0px, -30px);
+    -o-transform: perspective(100px) translate3d(100px, 0px, -30px);
+  }
+}
+
+@keyframes overshadowing-sx {
+  0% {
+    z-index: 3;
+    transform: perspective(100px) translate3d(0px, 0px, 0px);
+    opacity: 1;
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    z-index: 1;
+    transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    opacity: 0.5;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+@keyframes foregrounding-dx {
+  0% {
+    z-index: 1;
+    transform: perspective(100px) translate3d(100px, 0px, -30px);
+    opacity: 0.5;
+  }
+  50% {
+    z-index: 2;
+    transform: perspective(100px) translate3d(400px, 0px, -30px);
+    -webkit-transform: perspective(100px) translate3d(400px, 0px, -30px);
+    -moz-transform: perspective(100px) translate3d(400px, 0px, -30px);
+    -ms-transform: perspective(100px) translate3d(400px, 0px, -30px);
+    -o-transform: perspective(100px) translate3d(400px, 0px, -30px);
+  }
+  100% {
+    z-index: 3;
+    transform: perspective(100px) translate3d(0px, 0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes foregrounding-sx {
+  0% {
+    z-index: 1;
+    transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    opacity: 0.5;
+    -webkit-transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    -moz-transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    -ms-transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    -o-transform: perspective(100px) translate3d(-100px, 0px, -30px);
+  }
+  50% {
+    z-index: 3;
+    transform: perspective(100px) translate3d(-400px, 0px, -30px);
+  }
+  100% {
+    z-index: 3;
+    transform: perspective(100px) translate3d(0px, 0px, 0px);
+    opacity: 1;
   }
 }
