@@ -8,9 +8,11 @@ export default function Header({
   setFullscreen,
   fullscreen,
   isMenuopen,
+  mainColor,
 }) {
   return (
     <div
+      style={{ color: background, backgroundColor: mainColor }}
       className={`${
         fullscreen ? ` -top-20  ` : `  top-0`
       } fixed bg-theme-dark  h-20 w-full ${

@@ -1,6 +1,13 @@
-export default function Footer({ language, fullscreen, isMenuopen }) {
+export default function Footer({
+  language,
+  fullscreen,
+  isMenuopen,
+  mainColor,
+  background,
+}) {
   return (
     <div
+      style={{ color: background, backgroundColor: mainColor }}
       dir={`${language === "en" ? `ltr` : `rtl`}`}
       className={`${fullscreen ? ` -bottom-14 ` : ` bottom-0 `} ${
         isMenuopen

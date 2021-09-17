@@ -12,13 +12,19 @@ export default function Drawer({
   language,
 }) {
   return (
-    <div className={`  ${isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`} drawer `}>
+    <div
+      style={{ color: background, backgroundColor: mainColor }}
+      className={`  ${isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`} drawer `}
+    >
       <div
+        style={{
+          borderColor: background,
+        }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
-        className="flex items-center justify-between pb-6 font-semibold text-white border-b "
+        className="flex items-center justify-between pb-6 font-semibold  border-b "
       >
         <div className="flex items-center transform cursor-pointer hover:scale-105">
-          <RiDashboardLine size="1.6rem" className="text-white " />
+          <RiDashboardLine size="1.6rem" className=" " />
           <div className={`${language === "en" ? `pl-1` : `pr-1`}`}>
             Dashboard
           </div>
@@ -29,14 +35,15 @@ export default function Drawer({
           onClick={() => setIsMenuOpen(!isMenuopen)}
         >
           {language === "en" ? (
-            <AiOutlineMenuFold size="1.7rem" className="text-white" />
+            <AiOutlineMenuFold size="1.7rem" className="" />
           ) : (
-            <AiOutlineMenuUnfold size="1.7rem" className="text-white " />
+            <AiOutlineMenuUnfold size="1.7rem" className="" />
           )}
         </div>
       </div>
 
       <div
+        style={{ color: background, backgroundColor: mainColor }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
         className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2"
       >
@@ -46,16 +53,20 @@ export default function Drawer({
           background,
         }).map((item) => (
           <div
-            onClick={() => {}}
-            style={{
-              color: mainColor,
-              backgroundColor: background,
-            }}
-            className="flex items-center px-2 py-2 my-2 font-semibold  transition-transform bg-white rounded shadow-md cursor-pointer hover:shadow-lg transform-gpu hover:scale-105"
+            dir={`${language === "en" ? `ltr` : `rtl`}`}
+            className="bg-gray-50  "
           >
-            {item.icon}
-            <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
-              {item.name}
+            <div
+              style={{ color: background, backgroundColor: mainColor }}
+              onClick={() => {}}
+              className={` ${
+                language === "en" ? `menu-item-ltr` : `menu-item-rtl`
+              }`}
+            >
+              {item.icon}
+              <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
+                {item.name}
+              </div>
             </div>
           </div>
         ))}
@@ -65,17 +76,14 @@ export default function Drawer({
           className="bg-gray-50  "
         >
           <div
+            style={{ color: background, backgroundColor: mainColor }}
             onClick={() => {}}
             className={` ${
               language === "en" ? `menu-item-ltr` : `menu-item-rtl`
             }`}
           >
             <RiLogoutBoxLine size="1.6rem" color={background} />
-            <div
-              className={`${
-                language === "en" ? `pl-2` : `pr-2`
-              } text-theme-light`}
-            >
+            <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
               Logout
             </div>
           </div>

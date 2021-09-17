@@ -5,7 +5,7 @@ import OpenDrawerFloatingBtn from "./openDrawerFloatingBtn";
 const Layout = ({ children, parentClassName, isAuthenticated }) => {
   const [isMenuopen, setIsMenuOpen] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
-  const mainColor = "#333333";
+  const mainColor = "#555555";
   const background = "#F8F8F8";
   const language = "en";
   return (
@@ -15,6 +15,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
         setIsMenuOpen={setIsMenuOpen}
         mainColor={mainColor}
         language={language}
+        background={background}
       />
       <div
         className={`relative flex overflow-x-hidden transition duration-1000  ${
@@ -36,6 +37,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
           setFullscreen={setFullscreen}
           background={background}
           language={language}
+          mainColor={mainColor}
           children={children}
           parentClassName={parentClassName}
         />

@@ -4,21 +4,20 @@ export default function OpenDrawerFloatingBtn({
   setIsMenuOpen,
   mainColor,
   language,
+  background,
 }) {
   return (
     <div
-      style={{
-        backgroundColor: mainColor,
-      }}
+      style={{ color: background, backgroundColor: mainColor }}
       onClick={() => setIsMenuOpen(!isMenuopen)}
       className={`p-1 rounded-lg ${
         isMenuopen ? `hidden absolute` : `block fixed`
       } ${language === "en" ? `open-drawer-btn-ltr` : `open-drawer-btn-rtl`}`}
     >
       {language === "en" ? (
-        <AiOutlineMenuUnfold size="1.7rem" className="text-white" />
+        <AiOutlineMenuUnfold size="1.7rem" className="" />
       ) : (
-        <AiOutlineMenuFold size="1.7rem" className="text-white " />
+        <AiOutlineMenuFold size="1.7rem" className=" " />
       )}
     </div>
   );

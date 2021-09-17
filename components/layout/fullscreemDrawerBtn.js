@@ -9,9 +9,9 @@ export default function FullscreenDrawerBtn({
   return (
     <div
       onClick={() => setFullscreen(!fullscreen)}
-      className={` z-50 fixed bottom-5  cursor-pointer  ${
+      className={` z-50 fixed top-7  cursor-pointer  ${
         isMenuopen
-          ? `${language === "en" ? `left-5` : `right-5`}`
+          ? `${language === "en" ? `left-40` : `right-40`}`
           : `${language === "en" ? `hidden` : `hidden`}`
       } ${fullscreen ? `` : `hidden`} `}
     >

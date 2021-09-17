@@ -9,6 +9,7 @@ export default function ContnentContainer({
   background,
   setFullscreen,
   children,
+  mainColor,
 }) {
   return (
     <div
@@ -31,9 +32,12 @@ export default function ContnentContainer({
         setFullscreen={setFullscreen}
         background={background}
         language={language}
+        mainColor={mainColor}
       ></Header>
       {children}
       <Footer
+        background={background}
+        mainColor={mainColor}
         isMenuopen={isMenuopen}
         fullscreen={fullscreen}
         language={language}
