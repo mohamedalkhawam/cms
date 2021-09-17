@@ -34,9 +34,15 @@
     @apply min-h-screen shadow-md hover:shadow-lg bg-theme-dark z-50 transform-gpu transition-all duration-1000 flex-none select-none overflow-y-auto text-white fixed;
   }
   .menu-item-ltr {
-    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:translate-x-2  duration-200;
+    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:translate-x-3  duration-200;
   }
   .menu-item-rtl {
-    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:-translate-x-2  duration-200;
+    @apply flex items-center bg-theme-dark p-2 my-2 font-semibold  transition   hover:rounded-none  cursor-pointer  transform-gpu hover:-translate-x-3  duration-200;
+  }
+  .menu-item-active-ltr {
+    @apply translate-x-2;
+  }
+  .menu-item-active-rtl {
+    @apply -translate-x-2;
   }
 }

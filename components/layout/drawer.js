@@ -2,6 +2,7 @@ import FullscreenDrawerBtn from "./fullscreemDrawerBtn";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { renderDrowerData } from "./drawerData";
 import { RiDashboardLine, RiLogoutBoxLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 export default function Drawer({
   isMenuopen,
   setIsMenuOpen,
@@ -11,6 +12,7 @@ export default function Drawer({
   background,
   language,
 }) {
+  const router = useRouter();
   return (
     <div
       style={{ color: background, backgroundColor: mainColor }}
@@ -23,7 +25,10 @@ export default function Drawer({
         dir={`${language === "en" ? `ltr` : `rtl`}`}
         className="flex items-center justify-between pb-6 font-semibold  border-b "
       >
-        <div className="flex items-center transform cursor-pointer hover:scale-105">
+        <div
+          onClick={() => router.push("/")}
+          className="flex items-center transform cursor-pointer hover:scale-105"
+        >
           <RiDashboardLine size="1.6rem" className=" " />
           <div className={`${language === "en" ? `pl-1` : `pr-1`}`}>
             Dashboard
@@ -54,13 +59,20 @@ export default function Drawer({
         }).map((item) => (
           <div
             dir={`${language === "en" ? `ltr` : `rtl`}`}
-            className="bg-gray-50  "
+            className="bg-gray-50"
+            onClick={() => router.push(item.link)}
           >
             <div
               style={{ color: background, backgroundColor: mainColor }}
               onClick={() => {}}
-              className={` ${
-                language === "en" ? `menu-item-ltr` : `menu-item-rtl`
+              className={`menu-item-ltr  ${
+                router.pathname.includes(item.link.toLowerCase())
+                  ? `${
+                      language === "en"
+                        ? `menu-item-ltr menu-item-active-ltr`
+                        : `menu-item-rtl menu-item-active-rtl`
+                    }`
+                  : ``
               }`}
             >
               {item.icon}
@@ -79,7 +91,7 @@ export default function Drawer({
             style={{ color: background, backgroundColor: mainColor }}
             onClick={() => {}}
             className={` ${
-              language === "en" ? `menu-item-ltr` : `menu-item-rtl`
+              language === "en" ? `menu-item-ltr ` : `menu-item-rtl`
             }`}
           >
             <RiLogoutBoxLine size="1.6rem" color={background} />

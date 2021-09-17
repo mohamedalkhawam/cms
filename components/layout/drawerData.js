@@ -17,7 +17,7 @@ export const renderDrowerData = ({ mainColor, background }) => {
     {
       name: "Users",
       icon: <AiOutlineUser size="1.6rem" color={background} />,
-      link: "",
+      link: "/users",
     },
   ];
 };
