@@ -3,11 +3,11 @@ export default function Footer({
   fullscreen,
   isMenuopen,
   mainColor,
-  background,
+  themeLgihtColor,
 }) {
   return (
     <div
-      style={{ color: background, backgroundColor: mainColor }}
+      style={{ color: themeLgihtColor, backgroundColor: mainColor }}
       dir={`${language === "en" ? `ltr` : `rtl`}`}
       className={`${fullscreen ? ` -bottom-14 ` : ` bottom-0 `} ${
         isMenuopen
@@ -17,7 +17,7 @@ export default function Footer({
         isMenuopen
           ? `${language === "en" ? `left-64` : `right-64`}`
           : `${language === "en" ? `left-0` : `right-0`}`
-      }  h-14 w-full   transform-gpu transition-all text-theme-light px-7 flex justify-end items-center duration-1000 text-xs `}
+      }  h-14 w-full   transform-gpu transition-all  px-7 flex justify-end items-center duration-1000 text-xs `}
     >
       &copy; SOFTTECH 2020 - 2021
     </div>

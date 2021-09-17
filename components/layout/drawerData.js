@@ -12,11 +12,11 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { VscGitPullRequest } from "react-icons/vsc";
 import { GiModernCity, GiRegeneration } from "react-icons/gi";
 import { Fa500Px, FaCriticalRole } from "react-icons/fa";
-export const renderDrowerData = ({ mainColor, background }) => {
+export const renderDrowerData = ({ mainColor, themeLgihtColor }) => {
   return [
     {
       name: "Users",
-      icon: <AiOutlineUser size="1.6rem" color={background} />,
+      icon: <AiOutlineUser size="1.6rem" color={themeLgihtColor} />,
       link: "/users",
     },
   ];

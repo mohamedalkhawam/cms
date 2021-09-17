@@ -6,7 +6,7 @@ export default function ContnentContainer({
   fullscreen,
   isMenuopen,
   parentClassName,
-  background,
+  themeLgihtColor,
   setFullscreen,
   children,
   mainColor,
@@ -30,13 +30,13 @@ export default function ContnentContainer({
         isMenuopen={isMenuopen}
         fullscreen={fullscreen}
         setFullscreen={setFullscreen}
-        background={background}
+        themeLgihtColor={themeLgihtColor}
         language={language}
         mainColor={mainColor}
       ></Header>
       {children}
       <Footer
-        background={background}
+        themeLgihtColor={themeLgihtColor}
         mainColor={mainColor}
         isMenuopen={isMenuopen}
         fullscreen={fullscreen}

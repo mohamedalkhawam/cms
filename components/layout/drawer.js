@@ -9,18 +9,18 @@ export default function Drawer({
   fullscreen,
   setFullscreen,
   mainColor,
-  background,
+  themeLgihtColor,
   language,
 }) {
   const router = useRouter();
   return (
     <div
-      style={{ color: background, backgroundColor: mainColor }}
+      style={{ color: themeLgihtColor, backgroundColor: mainColor }}
       className={`  ${isMenuopen ? `w-64 px-4 py-7` : `w-0 p-0`} drawer `}
     >
       <div
         style={{
-          borderColor: background,
+          borderColor: themeLgihtColor,
         }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
         className="flex items-center justify-between pb-6 font-semibold  border-b "
@@ -48,14 +48,14 @@ export default function Drawer({
       </div>
 
       <div
-        style={{ color: background, backgroundColor: mainColor }}
+        style={{ color: themeLgihtColor, backgroundColor: mainColor }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
         className="h-screen  pb-8 overflow-x-hidden overflow-y-auto my-2"
       >
         {/* content start */}
         {renderDrowerData({
           mainColor,
-          background,
+          themeLgihtColor,
         }).map((item) => (
           <div
             dir={`${language === "en" ? `ltr` : `rtl`}`}
@@ -63,10 +63,10 @@ export default function Drawer({
             onClick={() => router.push(item.link)}
           >
             <div
-              style={{ color: background, backgroundColor: mainColor }}
+              style={{ color: themeLgihtColor, backgroundColor: mainColor }}
               onClick={() => {}}
               className={`menu-item-ltr  ${
-                router.pathname.includes(item.link.toLowerCase())
+                router.pathname.includes(item.name.toLowerCase())
                   ? `${
                       language === "en"
                         ? `menu-item-ltr menu-item-active-ltr`
@@ -88,13 +88,13 @@ export default function Drawer({
           className="bg-gray-50  "
         >
           <div
-            style={{ color: background, backgroundColor: mainColor }}
+            style={{ color: themeLgihtColor, backgroundColor: mainColor }}
             onClick={() => {}}
             className={` ${
               language === "en" ? `menu-item-ltr ` : `menu-item-rtl`
             }`}
           >
-            <RiLogoutBoxLine size="1.6rem" color={background} />
+            <RiLogoutBoxLine size="1.6rem" color={themeLgihtColor} />
             <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
               Logout
             </div>
@@ -104,7 +104,7 @@ export default function Drawer({
           isMenuopen={isMenuopen}
           fullscreen={fullscreen}
           setFullscreen={setFullscreen}
-          background={background}
+          themeLgihtColor={themeLgihtColor}
           language={language}
         />
       </div>

@@ -4,7 +4,7 @@ import FullscreenHeaderBtn from "./fullscreenHeaderBtn";
 
 export default function Header({
   language,
-  background,
+  themeLgihtColor,
   setFullscreen,
   fullscreen,
   isMenuopen,
@@ -12,7 +12,7 @@ export default function Header({
 }) {
   return (
     <div
-      style={{ color: background, backgroundColor: mainColor }}
+      style={{ color: themeLgihtColor, backgroundColor: mainColor }}
       className={`${
         fullscreen ? ` -top-20  ` : `  top-0`
       } fixed bg-theme-dark  h-20 w-full ${
@@ -27,12 +27,15 @@ export default function Header({
     >
       <FullscreenHeaderBtn
         language={language}
-        background={background}
+        themeLgihtColor={themeLgihtColor}
         setFullscreen={setFullscreen}
         fullscreen={fullscreen}
         isMenuopen={isMenuopen}
       />
-      <ChangeLanguageBtn language={language} background={background} />
+      <ChangeLanguageBtn
+        language={language}
+        themeLgihtColor={themeLgihtColor}
+      />
     </div>
   );
 }

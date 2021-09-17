@@ -4,11 +4,11 @@ export default function OpenDrawerFloatingBtn({
   setIsMenuOpen,
   mainColor,
   language,
-  background,
+  themeLgihtColor,
 }) {
   return (
     <div
-      style={{ color: background, backgroundColor: mainColor }}
+      style={{ color: themeLgihtColor, backgroundColor: mainColor }}
       onClick={() => setIsMenuOpen(!isMenuopen)}
       className={`p-1 rounded-lg ${
         isMenuopen ? `hidden absolute` : `block fixed`

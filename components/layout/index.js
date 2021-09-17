@@ -6,7 +6,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
   const [isMenuopen, setIsMenuOpen] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
   const mainColor = "#555555";
-  const background = "#F8F8F8";
+  const themeLgihtColor = "#F8F8F8";
   const language = "en";
   return (
     <>
@@ -15,7 +15,7 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
         setIsMenuOpen={setIsMenuOpen}
         mainColor={mainColor}
         language={language}
-        background={background}
+        themeLgihtColor={themeLgihtColor}
       />
       <div
         className={`relative flex overflow-x-hidden transition duration-1000  ${
@@ -28,14 +28,14 @@ const Layout = ({ children, parentClassName, isAuthenticated }) => {
           fullscreen={fullscreen}
           setFullscreen={setFullscreen}
           mainColor={mainColor}
-          background={background}
+          themeLgihtColor={themeLgihtColor}
           language={language}
         />
         <ContnentContainer
           isMenuopen={isMenuopen}
           fullscreen={fullscreen}
           setFullscreen={setFullscreen}
-          background={background}
+          themeLgihtColor={themeLgihtColor}
           language={language}
           mainColor={mainColor}
           children={children}
