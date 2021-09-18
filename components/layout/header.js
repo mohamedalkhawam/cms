@@ -35,6 +35,7 @@ export default function Header({
       <ChangeLanguageBtn
         language={language}
         themeLgihtColor={themeLgihtColor}
+        mainColor={mainColor}
       />
     </div>
   );

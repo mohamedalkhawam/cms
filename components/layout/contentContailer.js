@@ -13,10 +13,11 @@ export default function ContnentContainer({
 }) {
   return (
     <div
+      style={{ backgroundColor: themeLgihtColor }}
       dir={`${language === "en" ? `ltr` : `rtl`}`}
       className={`w-full transition-all duration-1000 flex-grow flex-shrik overflow-hidden ${
-        fullscreen ? `my-0 ` : ` my-20`
-      } ${
+        isMenuopen ? `fixed sm:static` : `static`
+      }   ${fullscreen ? `my-0 ` : ``} ${
         isMenuopen
           ? `${language === "en" ? `ml-64` : `mr-64`}`
           : `${language === "en" ? `ml-0` : `mr-0`}`
@@ -34,6 +35,7 @@ export default function ContnentContainer({
         language={language}
         mainColor={mainColor}
       ></Header>
+
       {children}
       <Footer
         themeLgihtColor={themeLgihtColor}

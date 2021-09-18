@@ -3,6 +3,7 @@ import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { renderDrowerData } from "./drawerData";
 import { RiDashboardLine, RiLogoutBoxLine } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 export default function Drawer({
   isMenuopen,
   setIsMenuOpen,
@@ -12,6 +13,7 @@ export default function Drawer({
   themeLgihtColor,
   language,
 }) {
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   return (
     <div
@@ -33,7 +35,7 @@ export default function Drawer({
         >
           <RiDashboardLine size="1.6rem" className=" " />
           <div className={`${language === "en" ? `pl-1` : `pr-1`}`}>
-            Dashboard
+            {t("dashboard")}
           </div>
         </div>
 
@@ -48,7 +50,6 @@ export default function Drawer({
           )}
         </div>
       </div>
-
       <div
         style={{ color: themeLgihtColor, backgroundColor: mainColor }}
         dir={`${language === "en" ? `ltr` : `rtl`}`}
@@ -67,18 +68,22 @@ export default function Drawer({
             <div
               style={{ color: themeLgihtColor, backgroundColor: mainColor }}
               onClick={() => {}}
-              className={`menu-item-ltr  ${
-                router.pathname.includes(item.name.toLowerCase())
+              className={`${
+                language === "en" ? `menu-item-ltr ` : `menu-item-rtl `
+              }  ${
+                router.pathname.includes(t(item.link).toLowerCase())
                   ? `${
                       language === "en"
-                        ? `menu-item-ltr menu-item-active-ltr`
-                        : `menu-item-rtl menu-item-active-rtl`
+                        ? `menu-item-active-ltr`
+                        : `menu-item-active-rtl`
                     }`
                   : ``
-              }`}
+              } `}
             >
               {item.icon}
-              <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
+              <div
+                className={`${language === "en" ? `pl-2` : `pr-2`} capitalize `}
+              >
                 {item.name}
               </div>
             </div>
@@ -97,8 +102,8 @@ export default function Drawer({
             }   `}
           >
             <RiLogoutBoxLine size="1.6rem" color={themeLgihtColor} />
-            <div className={`${language === "en" ? `pl-2` : `pr-2`} `}>
-              Logout
+            <div className={`${language === "en" ? `pl-2` : `pr-2`}  `}>
+              {t("logout")}
             </div>
           </div>
         </div>

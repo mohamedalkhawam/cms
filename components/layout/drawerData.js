@@ -12,10 +12,13 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { VscGitPullRequest } from "react-icons/vsc";
 import { GiModernCity, GiRegeneration } from "react-icons/gi";
 import { Fa500Px, FaCriticalRole } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 export const renderDrowerData = ({ mainColor, themeLgihtColor }) => {
+  const { t, i18n } = useTranslation();
+
   return [
     {
-      name: "Users",
+      name: t("users"),
       icon: <AiOutlineUser size="1.6rem" color={themeLgihtColor} />,
       link: "/users",
     },
